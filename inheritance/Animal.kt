@@ -1,9 +1,20 @@
+package inheritance
+
 // Classes are final by default, to use a class as a superclass, it must be declared as open.
 // Everything you want to override must also be open.
-open class Animal (open val name: String, open val weight: Int){
+open class Animal (
+    open val name: String,
+    open val weight: Int,
+){
     // If you define a property in the superclass using ´val´, you must override it in the subclass.
     // If a superclass property has been defined using ´var´, you don't need to override it in the subclass,
     // as ´var´ variables can be reused for other values.
+
+    // Secondary constructor
+    // If the class has a primary constructor,
+    // each secondary constructor needs to delegate to the primary constructor,
+    // either directly or indirectly through another secondary constructor(s).
+    constructor(name: String): this(name, 0)
 
     open var sound: String = "Default sound!"
 
@@ -18,8 +29,9 @@ open class Animal (open val name: String, open val weight: Int){
 
 class Dog(
     override val name: String,
-    override val weight: Int, val food: String
-    ) : Animal(name, weight){
+    override val weight: Int,
+    val food: String,
+) : Animal(name, weight){
 
     override var sound: String = "Ao ao!"
 
