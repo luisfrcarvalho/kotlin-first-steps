@@ -34,8 +34,8 @@ class Vehicle : Roamable {
 
     final override var velocity: Int = 200
 
-    var color = when(velocity) {
-        in 10 .. Int.MAX_VALUE -> true
+    var isOverSpeedLimit = when(velocity) {
+        in 100 .. Int.MAX_VALUE -> true
         else -> false
     }
 }
